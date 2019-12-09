@@ -1,0 +1,51 @@
+{
+  "name": "koala",
+  "version": "1.0.0",
+  "description": "This is a web page",
+  "main": "webpack.config.js",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^0.11.2",
+    "html-loader": "^0.5.1",
+    "html-webpack-plugin": "^2.30.1",
+    "koa": "^2.10.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-cors": "^0.0.16",
+    "koa-proxy": "^0.9.0",
+    "koa-proxy2": "^0.11.0",
+    "koa-router": "^7.3.0",
+    "koa-static": "^4.0.2",
+    "uglify-js": "^3.1.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "gojs": "^2.0.18",
+    "node-sass": "^4.12.0",
+    "sass": "^1.22.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "vue": "^2.5.13",
+    "vue-echarts": "^3.0.7",
+    "vue-loader": "^15.7.0",
+    "vue-router": "^3.0.1",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^2.11.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --color  --progress",
+    "dev": "webpack-dev-server --inline --progress --config webpack.config.js",
+    "watch": "webpack --config webpack.config.js --watch --colors"
+  },
+  "author": "wangyihan",
+  "license": "ISC"
+}
