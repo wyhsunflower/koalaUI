@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>koala's UI</title>
+</head>
+<style>
+    .time-picker {
+        display: flex;
+        flex-flow: row nowrap;
+        margin: 300px;
+    }
+</style>
+
+<body>
+    <div class="time-picker">
+        <button id="btn_add">加</button>
+        <input id="txt_hour" onfocus="targetMe(this)" type="number" value="1">:
+        <input id="txt_miu" onfocus="targetMe(this)" type="number" value="2">:
+        <input id="txt_sec" onfocus="targetMe(this)" type="number" value="3">
+        <button>AM</button>
+        <button id="btn_cut">减</button>
+    </div>
+    <div id="app"></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $("#btn_add").click(function () {
+
+        });
+        $("#btn_cut").click(function () {
+
+        });
+        var elTarget = {};
+        var timerCallback = function (value) {
+            changeNumberByTarget(value,elTarget);
+        }
+        var targetMe = function(target){
+            elTarget=target;
+        }
+        var changeNumberByTarget = function (value, target) {
+            $(target).val(parseInt($(target).val()) + value);
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>koa-proxy2</h1><p><img src="https://img.shields.io/travis/bornkiller/koa-proxy2/master.svg?style=flat" alt="Build Status">
+<img src="http://img.shields.io/coveralls/bornkiller/koa-proxy2.svg?style=flat" alt="Coverage Report">
+<img src="https://david-dm.org/bornkiller/koa-proxy2.svg?style=flat" alt="Package Dependency">
+<img src="https://david-dm.org/bornkiller/koa-proxy2/dev-status.svg?style=flat" alt="Package DevDependency"></p>
+<p>Make it convenience for mock nginx trick when use angular, make backward proxy easier. And please pay attention, the
+repo just for make development server when debug.</p>
+<h2>Inspiration</h2><p>use angular and nginx to develop web project, it make me feel helpless when communicate with real backend API through nginx, while I only mock static server, proxy server not included. To avoid directly modify the code in the nginx server root, and intercept specific URL for data mock, the scalable proxy module with nodejs become necessary. </p>
+<h2>Usage</h2><p>With time passing by, <code>koa-proxy2</code> integrate with body parser, therefore you don't have to use body parse middleware, like <code>koa-body</code> or something else, while never cause problem if you used for some reason. It support <code>json</code>, <code>urlencoded</code>, <code>multipart/form-data</code> proxy work well.</p>
+<p>I separate the <code>proxy rule</code> alone.</p>
+<p>The <code>proxy rule</code> act like followings:</p>
+<pre class="prettyprint source lang-javascript"><code>{
+  // URL match rule for specific path request proxy
+  proxy_location: '/v1/version',
+  // target backend, different between with URL or not
+  proxy_pass: 'http://api.google.com'
+}</code></pre><p><code>proxy_location</code> could be string or regular expression, when the original path match the string or regular expression, the proxy actived, otherwise, will just transfer the request next.</p>
+<p><code>proxy_pass</code> has different behaviour just like nginx. The above example, request <code>/v1/version</code> will resolved into <code>http://api.google.com/v1/version</code>, while when proxy_pass equals <code>http://api.google.com/</code> or with specific path, the original request path will omit.</p>
+<p>the <code>module configuration</code> act like belows:</p>
+<pre class="prettyprint source lang-javascript"><code>{
+  // whether parse the body, default true
+  body_parse: true,
+  // reserve the query string after path, default true.
+  keep_query_string: true,
+  // HTTP request timeout milliseconds, default 3000
+  proxy_timeout: 3000,
+  // which method should proxy, default ['GET', 'POST', 'PUT', 'DELETE']
+  proxy_methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  // array consist of proxy rule, default []
+  proxy_rules: [{
+    proxy_location: '/version/',
+    proxy_pass: 'http://localhost:5000/proxy/'
+  }]
+}</code></pre><h2>Practice</h2><p>Assume all real backend api follow the pattern <code>/v1/*</code>, all static files are in <code>./static</code>, you will need:</p>
+<pre class="prettyprint source lang-javascript"><code>var path = require('path');
+var koa = require('koa');
+var serve = require('koa-static');
+var proxy = require('koa-proxy2');
+var app = koa();
+
+app.use(proxy({
+  proxy_rules: [
+    {
+      proxy_location: /^\/v(?:0|1)/,
+      proxy_pass: 'http://192.168.100.124'
+    }
+  ]
+}));
+app.use(serve(path.join(__dirname, 'static')));
+app.use(function *() {
+    this.type = 'html';
+    this.body = fs.readFileSync(path.join(__dirname, 'static/index.html'), {encoding: 'utf-8'});
+});
+app.listen(1336);</code></pre><h2>Change Log</h2><ul>
+<li>2015/06/01 v0.10.0
+Modify into more nginx style, improve router functional match.</li>
+<li>2015/03/30 v0.7.2
+Fix fatal nodejs and iojs compatibility bug.</li>
+<li>2015/02/11 v0.7.0
+Fix fatal proxy bug, add <code>text/plain</code> body support, update all module dependency.</li>
+<li>2015/02/02 v0.6.0
+Remove unnecessary dependent package, fix cookie transfer fatal BUG.</li>
+<li>2014/12/24 v0.5.5
+Add <code>multipart/form-data</code> body parser error handler, support <code>formidable</code> module options pass.</li>
+<li>2014/12/23 v0.5.0
+Add <code>multipart/form-data</code> mime type support.</li>
+<li>2014/12/21 v0.4.5
+Remove <code>koa-body</code> dependency, as well as <code>multipart/form-data</code> support.</li>
+<li>2014/12/18 v0.4.0
+Fix content transfer bugs.</li>
+</ul>
+<h2>License</h2><p>  MIT</p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-koa-proxy2.html">koa-proxy2</a></li><li><a href="module-utils_utils.html">utils/utils</a></li></ul><h3><a href="global.html">Global</a></h3>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-beta1</a> on Sat Jul 11 2015 12:28:08 GMT+0800 (CST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
