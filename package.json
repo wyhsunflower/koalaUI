@@ -27,6 +27,7 @@
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "cross-env": "^5.2.0",
     "gojs": "^2.0.18",
     "materialcss": "^0.3.3",
