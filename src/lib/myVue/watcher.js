@@ -5,10 +5,10 @@ import { Dep } from "./Dep";
 // 所以需要做一个判断操作，
 // 因此可以在订阅器上做一下手脚：在Dep.target上缓存下订阅者，添加成功后再将其去掉就可以了。
 export class myWacher {
-    vm:any;
-    cb:Function;
-    exp:any;
-    value:any;
+    vm;
+    cb;
+    exp;
+    value;
 
     constructor(vm, exp, cb){
        this.cb = cb;

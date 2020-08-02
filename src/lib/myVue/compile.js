@@ -1,7 +1,7 @@
 export class Compile {
 
-    $vm:any;
-    $el:any;
+    $vm;
+    $el;
     constructor(el,vm){
         this.$vm = vm;
         this.$el = this.isElementNode(el) ? el : document.querySelector(el);
