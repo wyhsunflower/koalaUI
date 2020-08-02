@@ -4,7 +4,7 @@ import { Dep } from "./Dep";
 // 只要在订阅者Watcher初始化的时候才需要添加订阅者，
 // 所以需要做一个判断操作，
 // 因此可以在订阅器上做一下手脚：在Dep.target上缓存下订阅者，添加成功后再将其去掉就可以了。
-export class myWacher {
+export default class Watcher {
     vm;
     cb;
     exp;

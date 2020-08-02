@@ -1,8 +1,10 @@
 // 订阅器
-export class Dep {
-    subs = [];
+import Watcher from './watcher';
 
-    addSub(sub) {
+export class Dep {
+    subs:Array<Watcher>;
+
+    addSub(sub:Watcher) {
         this.subs.push(sub);
     }
 
