@@ -5,9 +5,9 @@ import { Dep } from "./Dep";
 // 所以需要做一个判断操作，
 // 因此可以在订阅器上做一下手脚：在Dep.target上缓存下订阅者，添加成功后再将其去掉就可以了。
 export default class Watcher {
-    vm;
-    cb;
-    exp;
+    vm; // Vue的实例对象
+    cb; // Watcher绑定的更新函数
+    exp; // 是node节点的v-model或v-on：click等指令的属性值。
     value;
 
     constructor(vm, exp, cb){
@@ -21,9 +21,10 @@ export default class Watcher {
         //缓存自己
         Dep.target = this;  
         // 强制执行监听器里的get函数
-        this.value = this.vm.data[this.exp];
+        let value = this.vm.data[this.exp];
         //释放自己
         Dep.target = null;
+        return value;
     }
 
     update() {
