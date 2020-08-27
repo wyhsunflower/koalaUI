@@ -81,8 +81,8 @@ export class myPromise {
                         let returnValue = _onResolve(this.value);
                         // resolve(returnValue) 本次 Promise 继续 returnValue
                         this.resolvePromise(newPromise, returnValue, resolve, reject) 
-                      } catch (error) {
-                          reject(error);
+                    } catch (error) {
+                            reject(error);
                     }
                 });
 
