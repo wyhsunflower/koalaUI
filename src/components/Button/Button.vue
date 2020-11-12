@@ -107,6 +107,7 @@
     .koala-button-outline{
         top: -1px;
         left: -1px;
+        background-color: transparent;
         // border: 1px solid transparent;
         // color:$color-btn-primary;
         // border-color: $color-btn-primary;

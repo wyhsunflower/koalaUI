@@ -20,6 +20,8 @@
 <script>
     // import Modal from '../components/Modal/Modal.vue'
     // import Button from '../components/Button/Button.vue'
+    import TestPackage from '../lib/promise/TestPackage.js';
+    import AsyncTest from '../lib/promise/Test.js'
     export default {
         name: "home",
         data(){
@@ -28,10 +30,23 @@
                 message:'没点'
             }
         },
+
+        mounted() {
+            TestPackage.set('token','222');
+            this.showToken();
+        },
+
+
         // components:{
         //     Button
         // },
         methods:{
+            async showToken(){
+                console.log('-----');
+                const TT = new TestPackage();
+                const token = await TT.get('token');
+                console.log(token)
+            },
             showModal(){
                 this.modal = true
             },

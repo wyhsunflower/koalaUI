@@ -12,8 +12,16 @@ const config = {
         filename: '[name].[hash].js',
     },
     // devServer:{
-    //     contentBase:"./dist",
-    //     port: 9090,
+    //     proxy:{
+    //         '/api':{
+    //             target:'http://localhost:3000',
+    //             ws:true,
+    //             changeOrigin:true,
+    //             pathRewrite: {  // 替换，通配/api的替换成/
+    //                 '^/api': '/'
+    //             }
+    //         }
+    //     }
     // },
     module: {
         rules: [
@@ -21,9 +29,9 @@ const config = {
                 test:/\.js$/,
                 //loader:'babel-loader',
                 use:[
-                    {
-                        loader: "./removeConsole"
-                    },
+                    // {
+                    //     loader: "./removeConsole"
+                    // },
                     {
                         loader: "babel-loader"
                     }
