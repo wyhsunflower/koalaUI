@@ -33,7 +33,7 @@
     "babel-runtime": "^6.26.0",
     "cross-env": "^5.2.0",
     "gojs": "^2.0.18",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "materialcss": "^0.3.3",
     "node-sass": "^4.12.0",
     "sass": "^1.22.3",
