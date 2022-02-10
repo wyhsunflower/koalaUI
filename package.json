@@ -35,7 +35,7 @@
     "gojs": "^2.0.18",
     "lodash": "^4.17.19",
     "materialcss": "^0.3.3",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "sass": "^1.22.3",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
