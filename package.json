@@ -12,7 +12,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-loader": "^0.5.1",
-    "html-webpack-plugin": "^2.30.1",
+    "html-webpack-plugin": "^5.5.0",
     "koa": "^2.10.0",
     "koa-bodyparser": "^4.2.0",
     "koa-cors": "^0.0.16",
@@ -43,7 +43,7 @@
     "vue-echarts": "^3.0.7",
     "vue-loader": "^15.7.0",
     "vue-router": "^3.0.1",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^2.11.5"
   },
   "scripts": {
